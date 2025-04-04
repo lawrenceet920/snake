@@ -94,8 +94,21 @@ def main():
                 count_to_keyframe = 0
                 player_data = move_player(player_data, movement)
 
-            # apple
+            # Grid
+            grid = {'x':0, 'y':1}
+            gridding = True
+            while gridding:
+                if grid['x'] == 14:
+                    grid['y'] += 1
+                    grid['x'] = 1
+                else:
+                    grid['x'] += 1
+                draw_rect(screen, (20, 20, 20), grid['x']*config.GAME_SCALE + config.GAME_SCALE*1/10, grid['y']*config.GAME_SCALE + config.GAME_SCALE*1/10, config.GAME_SCALE*4/5, config.GAME_SCALE*4/5)
+                if grid == {'x':14, 'y':10}:
+                    gridding = False
+            # Apple
             draw_rect(screen, config.RED, apple['x']*config.GAME_SCALE + config.GAME_SCALE*1/10, apple['y']*config.GAME_SCALE + config.GAME_SCALE*1/10, config.GAME_SCALE*4/5, config.GAME_SCALE*4/5)
+            # Player
             draw_player(screen, player_data)
 
             # collision
