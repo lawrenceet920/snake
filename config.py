@@ -14,9 +14,10 @@ BLUE = (0, 0, 255)
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
 
+GAME_SCALE = 50
 # Window CAption
 
-TITLE = 'My Pygame Project'
+TITLE = 'Snake'
 
 # Frame rate
 FPS = 60
