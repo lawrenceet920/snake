@@ -1,6 +1,6 @@
 # Ethan Lawrence 
-# Feb 12 2025
-# Pygame template ver 2
+# April 4 2025
+# Snake
 
 import pygame
 import sys
