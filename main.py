@@ -94,6 +94,8 @@ def main():
                 count_to_keyframe = 0
                 player_data = move_player(player_data, movement)
 
+            # Score
+            draw_text(screen, f'Score: {len(player_data)-3}', config.RED, [0, 0])
             # Grid
             grid = {'x':0, 'y':1}
             gridding = True
@@ -111,10 +113,10 @@ def main():
             # Player
             draw_player(screen, player_data)
 
-            # collision
+            # Collision
             print(player_data[0])
             if player_data[0]['x'] == apple['x'] and player_data[0]['y'] == apple['y']:
-                player_data.append({'type' : 'body', 'x' : 0, 'y' : 0})
+                player_data.append({'type' : 'body', 'x' : 15, 'y' : 11})
                 looping = True
                 while looping:
                     flag = False
