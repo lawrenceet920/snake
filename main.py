@@ -72,6 +72,8 @@ def main():
     count_to_keyframe = 0
     movement = 'd'
     game_over = False
+    game_width = (config.WINDOW_WIDTH/config.GAME_SCALE) - 2
+    game_height = (config.WINDOW_HEIGHT/config.GAME_SCALE) - 2
     while running:
         running = handle_events()
         screen.fill(config.GREEN)
@@ -100,13 +102,13 @@ def main():
             grid = {'x':0, 'y':1}
             gridding = True
             while gridding:
-                if grid['x'] == 14:
+                if grid['x'] == game_width:
                     grid['y'] += 1
                     grid['x'] = 1
                 else:
                     grid['x'] += 1
                 draw_rect(screen, (20, 20, 20), grid['x']*config.GAME_SCALE + config.GAME_SCALE*1/10, grid['y']*config.GAME_SCALE + config.GAME_SCALE*1/10, config.GAME_SCALE*4/5, config.GAME_SCALE*4/5)
-                if grid == {'x':14, 'y':10}:
+                if grid == {'x':game_width, 'y':game_height}:
                     gridding = False
             # Apple
             draw_rect(screen, config.RED, apple['x']*config.GAME_SCALE + config.GAME_SCALE*1/10, apple['y']*config.GAME_SCALE + config.GAME_SCALE*1/10, config.GAME_SCALE*4/5, config.GAME_SCALE*4/5)
@@ -114,13 +116,12 @@ def main():
             draw_player(screen, player_data)
 
             # Collision
-            print(player_data[0])
             if player_data[0]['x'] == apple['x'] and player_data[0]['y'] == apple['y']:
-                player_data.append({'type' : 'body', 'x' : 15, 'y' : 11})
+                player_data.append({'type' : 'body', 'x' : game_width+1, 'y' : game_height+1})
                 looping = True
                 while looping:
                     flag = False
-                    apple = {'x' : random.randint(1, 14), 'y' : random.randint(1, 10)}
+                    apple = {'x' : random.randint(1, game_width), 'y' : random.randint(1, game_height)}
                     for chunk in player_data:
                         if chunk['x'] == apple['x'] and chunk['y'] == apple['y']:
                             flag = True
@@ -134,7 +135,7 @@ def main():
                     if player_data[0]['x'] == chunk['x'] and player_data[0]['y'] == chunk['y']:
                         game_over = True
             
-            if not((0 < player_data[0]['x'] < 15) and (0 < player_data[0]['y'] < 10)):
+            if not((0 < player_data[0]['x'] < game_width+1) and (0 < player_data[0]['y'] < game_height+1)):
                 game_over = True
         else:
             draw_text(screen, 'Game Over', config.GREEN, [400, 300])
