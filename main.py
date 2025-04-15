@@ -92,7 +92,7 @@ def main():
                 movement = 'd'
 
             count_to_keyframe += 1
-            if count_to_keyframe == config.FPS/2:
+            if count_to_keyframe == config.FPS/4:
                 count_to_keyframe = 0
                 player_data = move_player(player_data, movement)
 

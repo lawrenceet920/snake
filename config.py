@@ -14,7 +14,7 @@ BLUE = (0, 0, 255)
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
 
-GAME_SCALE = 50
+GAME_SCALE = 40
 # Window CAption
 
 TITLE = 'Snake'
